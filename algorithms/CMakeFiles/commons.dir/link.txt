@@ -1,0 +1,1 @@
+/usr/bin/c++.exe   -Wall -std=c++11 -Wall -ggdb  -O3 -DNDEBUG    -shared -Wl,--enable-auto-import -o cygcommons.dll -Wl,--out-implib,libcommons.dll.a -Wl,--major-image-version,0,--minor-image-version,0  

@@ -1,0 +1,1 @@
+/usr/bin/c++.exe   -Wall -ggdb -I../include -I../common -O3 -DNDEBUG  -Wl,--enable-auto-import  CMakeFiles/MyList.dir/MyList.cpp.o  -o MyList.exe -Wl,--out-implib,libMyList.dll.a -Wl,--major-image-version,0,--minor-image-version,0  

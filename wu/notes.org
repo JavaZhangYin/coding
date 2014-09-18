@@ -1,0 +1,21 @@
+* About Pointer
+** What does a pointer mean?
+*** How to understand a pointer
+*** Comparing a pointer variable with a normal variable 
+** Advantages of using pointers (and references)
+
+* Use cases of pointers 
+** Most common use 
+** As function parameters 
+** Pointers and arrays 
+** Pointers and polymorphyism (C++)
+** Pointer's pointer (more confusing)
+** Constant pointers 
+** Function pointer (advanced usage)
+** Debugging program with pointers 
+
+* Structure 
+** How to understand a structure 
+** Why structure?
+** Structures and classes
+** How structures can be used in the program

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/simon/coding/algorithms/Sort.cpp
+iostream
+-
+cstdlib
+-
+ctime
+-
+Sort.hpp
+/home/simon/coding/algorithms/Sort.hpp
+
+/home/simon/coding/algorithms/Sort.hpp
+

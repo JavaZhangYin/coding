@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/simon/coding/libadt/src/MyList.cpp
+stdexcept
+-
+MyArray.hpp
+/home/simon/coding/libadt/src/MyArray.hpp
+MyLink.hpp
+/home/simon/coding/libadt/src/MyLink.hpp
+MyObject.hpp
+/home/simon/coding/libadt/src/MyObject.hpp
+MyContainer.hpp
+/home/simon/coding/libadt/src/MyContainer.hpp
+MyList.hpp
+/home/simon/coding/libadt/src/MyList.hpp
+

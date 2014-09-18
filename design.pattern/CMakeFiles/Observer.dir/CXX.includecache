@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/simon/coding/design.pattern/Observer.cpp
+iostream
+-
+string
+-
+cstdlib
+-
+vector
+-
+random
+-
+algorithm
+-
+

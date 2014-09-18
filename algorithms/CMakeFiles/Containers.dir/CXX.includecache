@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/simon/coding/algorithms/Containers.cpp
+iostream
+-
+string
+-
+array
+-
+vector
+-
+deque
+-
+list
+-
+stack
+-
+queue
+-
+set
+-
+map
+-
+cstdlib
+-
+

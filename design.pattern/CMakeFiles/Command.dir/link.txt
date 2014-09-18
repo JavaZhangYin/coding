@@ -1,0 +1,1 @@
+/usr/bin/c++.exe   -Wall -std=c++11 -Wall -std=c++11  -Wl,--enable-auto-import  CMakeFiles/Command.dir/Command.o  -o Command.exe -Wl,--out-implib,libCommand.dll.a -Wl,--major-image-version,0,--minor-image-version,0  

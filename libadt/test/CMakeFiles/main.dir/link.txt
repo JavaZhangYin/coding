@@ -1,0 +1,1 @@
+/usr/bin/c++.exe   -Wall -ggdb -I../include -I../common/include -Iinclude -L../src -O3 -DNDEBUG  -Wl,--enable-auto-import  CMakeFiles/main.dir/src/main.cpp.o CMakeFiles/main.dir/src/array_test.cpp.o  -o main.exe -Wl,--out-implib,libmain.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -ladt 

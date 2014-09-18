@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/simon/coding/libadt/test/src/array_test.cpp
+string
+-
+iostream
+-
+typeinfo
+-
+stdexcept
+-
+MyArray.hpp
+/home/simon/coding/libadt/test/src/MyArray.hpp
+test.hpp
+/home/simon/coding/libadt/test/src/test.hpp
+array_test.hpp
+/home/simon/coding/libadt/test/src/array_test.hpp
+

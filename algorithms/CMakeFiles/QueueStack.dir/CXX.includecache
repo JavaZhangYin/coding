@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/simon/coding/algorithms/QueueStack.cpp
+iostream
+-
+queue
+-
+cstdlib
+-
+ctime
+-
+Stack.hpp
+/home/simon/coding/algorithms/Stack.hpp
+
+/home/simon/coding/algorithms/Stack.hpp
+iostream
+-
+

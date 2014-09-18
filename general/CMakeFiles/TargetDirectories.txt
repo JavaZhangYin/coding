@@ -1,0 +1,2 @@
+/home/simon/coding/general/CMakeFiles/lvaluervalue.dir
+/home/simon/coding/general/CMakeFiles/palindrome.dir

@@ -1,0 +1,14 @@
+#
+# demo N=98  E=200  Beta=0.1 (Thu Mar 20 14:49:30 2014)
+#
+# Fraction of observed data (P)	Network cascade Average	Influence cascade Average
+0.1	1.07984	1
+0.2	1.1408	1
+0.3	1.24778	1
+0.4	1.38215	1
+0.5	1.46831	1
+0.6	1.59757	1
+0.7	1.68404	1
+0.8	1.81206	1
+0.9	1.93668	1
+1	2.06186	1

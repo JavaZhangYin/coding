@@ -1,0 +1,9 @@
+/home/simon/coding/algorithms/CMakeFiles/binarysearch.dir
+/home/simon/coding/algorithms/CMakeFiles/binarysearchtree.dir
+/home/simon/coding/algorithms/CMakeFiles/commons.dir
+/home/simon/coding/algorithms/CMakeFiles/containers.dir
+/home/simon/coding/algorithms/CMakeFiles/fibonacci.dir
+/home/simon/coding/algorithms/CMakeFiles/queuestack.dir
+/home/simon/coding/algorithms/CMakeFiles/sort.dir
+/home/simon/coding/algorithms/CMakeFiles/testcommons.dir
+/home/simon/coding/algorithms/CMakeFiles/testsort.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++.exe   -Wall -std=c++11 -Wall -std=c++11  -Wl,--enable-auto-import  CMakeFiles/facade.dir/Facade.o  -o facade.exe -Wl,--out-implib,libfacade.dll.a -Wl,--major-image-version,0,--minor-image-version,0  
