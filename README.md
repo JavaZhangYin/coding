@@ -1,4 +1,3 @@
 About
-=====
-
-This repository contains coding practices in C++, java and many others programming languages.
+===============
+Coding practices in C++, java and many others.
