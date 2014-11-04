@@ -29,7 +29,7 @@ bool is_redundant(std::string s) {
   if(stack.size() > 1) 
     std::cout << "parenthesis does not match..." << std::endl; 
   
-  return stack.top() != 0; 
+  return false; 
 }
 
 int main() {
