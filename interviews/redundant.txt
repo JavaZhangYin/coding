@@ -1,0 +1,4 @@
+write code to validate if the input string has redundant braces? 
+
+((a+b)) - Has redundant braces. 
+(a+(b+c)) - This doesn't has redundant braces.
