@@ -1,0 +1,31 @@
+'''Suppose you have a large un-sanitized list of potential email addresses
+
+a. Can you write a regex to describe the valid email addresses 
+
+^[a-zA-Z0-9._]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,4}$
+
+b. How can the following implementation be improved 
+# Not quite sure here what "improved" means. What I did is to use a 
+# short hand writing of the for loop.
+
+# dirtyEmails = ["johnatgmailcom","john@yahoo", "john@gmail.com"] 
+
+YOUR_REG_EX="???"
+validEmails = [] 
+for email in emails: 
+    if re.compile(YOUR_REG_EX).match(email): 
+    validEmails.append(email)
+'''
+import re
+dirtyEmails = ["johnatgmailcom","john@yahoo", "john@gmail.com"]
+
+YOUR_REG_EX="^[a-zA-Z0-9._]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,4}$"
+validEmails = []
+
+for email in dirtyEmails:
+    if re.compile(YOUR_REG_EX).match(email):
+        validEmails.append(email)
+
+# improved version below
+validEmails = [email for email in dirtyEmails if re.compile(YOUR_REG_EX).match(email)]
+print validEmails

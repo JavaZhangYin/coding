@@ -1,0 +1,7 @@
+a. find median of list
+The most straight forward way is to sort the list then the middle element will be the median. 
+
+b. find the kth largest number of list. 
+Similar to the above question, we can sort the list (ascending) first, then the kth element will tbe the result. 
+
+c. sorting algorithm has complexity higher than O(n), so, it will very hard if possible to reduce the complexity to linear time. 

@@ -1,0 +1,35 @@
+# Given a file with two columns account and amount, find the subtotal of amounts for all unique accounts. 
+
+# a. Please implement in linear time if possible. 
+# My solution is to use a map, I will scan the input data file once. 
+# And the map will be populated with unique accounts and their total amounts. 
+# 
+# The complexity is O(M + N), M is the number of unique accounts and N is the number of data records. 
+accounts = {} 
+
+account_data = open('accounts.txt') 
+for account in account_data: 
+    acc = account.strip().split('\t') # Assuming tab (\t) as column separator. 
+    if len(acc) != 2: 
+        continue
+    if accounts.has_key(acc[0]):
+        accounts[acc[0]] = accounts[acc[0]] + acc[1] 
+    else:
+        accounts[acc[0]] = acc[1]
+
+for acc in accounts.keys():
+    print acc, accounts[acc] 
+
+# b. When would your linear-time algorithm not work?
+# 
+# The map data structure is used to store the resultant data. 
+# This works fine if the number of unique accounts is limited so that 
+# they can be stored in memory. But when the number of unique account
+# increases, the space required for storing the data will increase too. 
+# When the memory requirement for storing the account data is exceeding 
+# the available memory in the system, this solution will start to fail. 
+# 
+# In order to make it work in this scenario, there are multiple alternative
+# ways. For example, we can use a distributed key-value store, such as redis. 
+
+

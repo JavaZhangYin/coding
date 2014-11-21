@@ -1,0 +1,27 @@
+# Given two files with words, write a program to find their common words.
+# My solution is to use the set data structure. The following steps will be used: 
+# 1, split sentences into words and put them into a set for the two files. 
+# 2, do a set intersection on these two sets
+# 3, output the result. 
+
+from sets import Set 
+file1 = open('file1.txt')
+file2 = open('file2.txt') 
+
+set1 = Set([])
+set2 = Set([])
+
+for line in file1:
+    words = line.strip().split(' ')
+    for word in words:
+        set1.add(word) 
+
+for line in file2:
+    words = line.strip().split(' ')
+    for word in words:
+        set2.add(word)
+
+common_words = set1 & set2
+
+for word in common_words:
+    print word

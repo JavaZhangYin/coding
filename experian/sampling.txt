@@ -1,0 +1,35 @@
+'''
+Given a file with one record per line, write a program for the following tasks
+a. Randomly select roughly 10% of the records 
+b. Randomly select exactly n of the records. 
+c. Randomly select exactly n of the records in linear time.
+'''
+# Steps: 
+# 1, get the total number of lines in the file 
+# 2, create a random array with 10% and n of total records. 
+# 3, scan the file again and output the line that matches the random number. 
+# Sorry, implementation not tested. 
+# 
+import numpy.random as rnd
+from sets import Set
+
+file = open('file.txt')
+total_records = 0
+
+for line in file:
+    total_records += 1
+
+# 10% sample. 
+ten_percent = int(total_records * 1)
+# print total_records, ten_percent
+
+# generate random numbers:
+# rnds = rnd.randint(1, total_records, ten_percent) 
+rnds = Set([]) 
+while len(rnds) < ten_percent:
+    rnds.add(rnd.randint(1, total_records, 1))
+
+line_num = 0
+for line in file: 
+    if line_num in rnds: 
+        print line 
