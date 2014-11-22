@@ -50,7 +50,8 @@ int main() {
   std::cout << std::endl << "Quick sort ...... " << std::endl;
   genRandom(array, LEN);
   printArray(array, LEN);
-  sort->quickSort(array, LEN);
+  // sort->quickSort(array, LEN);
+  sort->quickSortInPlace(array, LEN); 
   printArray(array, LEN);
 
   // shell sort. 

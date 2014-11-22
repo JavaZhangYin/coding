@@ -93,6 +93,46 @@ public:
     }
   }
 
+  void quickSortInPlace(T array[], sort_size_t size) {
+    if (size <= 1) return; 
+
+    // use the last value as the pivot, do the split now. 
+    T pivot = array[size-1]; 
+    int idx, split; 
+    bool changed = false;
+    for(int i = 0; i < size-1; i++) {
+      changed = false; 
+      while(i < size-1 && array[i] <= pivot) { i++; }
+      while(i < size-1 && array[i] > pivot) { i++; }
+
+      idx = i; 
+      T val = array[i]; 
+      if(idx < size - 1 && val < pivot) {
+	while(idx >= 0 && array[--idx] > pivot) { array[idx+1] = array[idx]; changed = true; }
+	array[++idx] = val; 
+      }
+      // std::cout << "changed = " << changed << std::endl; 
+ 
+      // printArray(array, size); // debug
+     
+      if(changed == true) i = 0;
+    }
+
+    // the last value. 
+    split = size-2;
+    while(split >= 0 && array[split] > pivot) {
+      array[split+1] = array[split--]; 
+    }
+    array[++split] = pivot; 
+    printArray(array, size); // debug
+
+    // quicksort for the two parts separately. 
+    quickSortInPlace(array, split);
+    quickSortInPlace(array + split + 1, size - split - 1); 
+
+    // no combine is needed as everything is done in place.  
+  }
+
   // this version requires additional space, 
   // an in place version can be implemented as an improvement. 
   void quickSort(T array[], sort_size_t size) {

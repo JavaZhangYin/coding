@@ -1,1 +1,0 @@
-/usr/bin/c++.exe   -Wall -std=c++11 -ggdb -O3 -DNDEBUG  -Wl,--enable-auto-import  CMakeFiles/BubbleSort.dir/BubbleSort.cpp.o  -o BubbleSort.exe -Wl,--out-implib,libBubbleSort.dll.a -Wl,--major-image-version,0,--minor-image-version,0  

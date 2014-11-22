@@ -1,1 +1,0 @@
-/usr/bin/c++.exe   -Wall -std=c++11 -Wall -ggdb  -O3 -DNDEBUG  -Wl,--enable-auto-import  CMakeFiles/binarysearchtree.dir/BinarySearchTree.cpp.o  -o binarysearchtree.exe -Wl,--out-implib,libbinarysearchtree.dll.a -Wl,--major-image-version,0,--minor-image-version,0  
