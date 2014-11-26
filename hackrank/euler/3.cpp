@@ -23,15 +23,16 @@ int main() {
     for(int i = 0; i < t; i++) {
         cin >> n;
         long m = n;
-         
-        while(n > 0) {
-            if(m % n == 0 && isPrime(n)) {
-                cout << n << endl;
-                break;
+
+        for(long j = 2; j <= sqrt(m); j++) {
+            // cout << "m = " << m << ", j = " << j << endl; 
+            if(m % j == 0) {
+                //cout << "m = " << m << ", j = " << j << endl; 
+
+                m /= j;
+                j = 1; 
             }
-            n--;
-            
         }
+        cout << m << endl; 
     }
-    
 }
