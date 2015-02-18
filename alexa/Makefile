@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS+=-std=c11
+CFLAGS+=-std=c99
 CFLAGS+=-ggdb
 LDFLAGS=-lpthread
 OBJS=wordcount.o
