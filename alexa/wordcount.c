@@ -47,6 +47,16 @@ long wordcount(FILE* file) {
   char c = 'a'; 
   pthread_t pmt;// progress monitor thread. 
 
+  // start the monitoring process.
+  int th;
+  th = pthread_create(&pmt, NULL, (void *)&progress_monitor, (PROGRESS_STATUS *)status);
+
+  // make sure that the thread created corrrectly.
+  if (th) {
+    perror("Error creating new thread...\n"); 
+    pthread_exit(NULL);
+  }
+
   do {
 
     byteCnt++; 
@@ -54,14 +64,6 @@ long wordcount(FILE* file) {
     // putchar(c);
     if(isspace(c)) {
       wc++; 
-      int th;
-      th = pthread_create(&pmt, NULL, (void *)&progress_monitor, (PROGRESS_STATUS *)status);
-      //progress_monitor(status);
-      // make sure that the thread created corrrectly.
-      if (th) {
-      	perror("Error creating new thread...\n"); 
-      	pthread_exit(NULL);
-      }
     }
      
   } while((c = fgetc(file)) != EOF); 
@@ -73,23 +75,21 @@ long wordcount(FILE* file) {
 
 void progress_monitor(PROGRESS_STATUS *status) {
   static int p = 0; 
-  //printf("hello");
-  pthread_mutex_t mutex; 
-  pthread_mutex_lock(&mutex);
-  int pp = ((double)status->CurrentStatus / status->TerminationValue) * 100;
 
-  for(int i = 0; i < pp - p; i++) {
-    //int cur = p + i;
-    //if ((cur > 0) && (cur % 20 == 0)) printf("+");
-    printf("-"); 
+  while (1) {
+    int pp = ((double)status->CurrentStatus / status->TerminationValue) * 100;
+    
+    for(int i = 0; i < pp - p; i++) {
+      int cur = p + i;
+      if ((cur > 0) && (cur % 20 == 0)) printf("+");
+      printf("-"); 
+      fflush(stdout);
+    }
+
+    if (100 == pp) {
+      printf("+");
+      pthread_exit(NULL);      
+    }
+    p = pp;
   }
-  if(pp > p && pp > 0 && (pp % 20) == 0) printf("+");
-  //if (100 == pp) printf("\n");
-  pthread_mutex_unlock(&mutex); 
-
-  p = pp;
-  pthread_mutex_unlock(&mutex);
-
-  fflush(stdout);
-  pthread_exit(NULL);
 }
