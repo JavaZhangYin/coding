@@ -1,3 +1,4 @@
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -23,7 +24,7 @@ int main(int argc, char** argv) {
   FILE* file = fopen(argv[1], "r");
 
   long wc = wordcount(file); 
-  printf("There are %ld words in the file. \n", wc); 
+  printf("\nThere are %ld words in the file. \n", wc); 
 
   fclose(file); 
   return 0;
@@ -40,49 +41,55 @@ long wordcount(FILE* file) {
   fseek(file, 0L, SEEK_SET); 
 
   int byteCnt = 0; 
-  long wc = 0; 
-  pid_t pid = fork(); 
+  long wc = 0;
+  
   // read byte by byte. 
-  char c; 
+  char c = 'a'; 
+  pthread_t pmt;// progress monitor thread. 
+
   do {
 
-    
-    if(pid == 0) {
-      printf("child --> %d\n", pid); 
-      fflush(stdout);
-      status->CurrentStatus = byteCnt; 
-      progress_monitor(status);
-      
-    } else if (pid > 0) {
-      //printf("parent.\n"); 
-      fflush(stdout);
-      byteCnt++; 
-      if(isspace(c)) wc++; 
-    } else {
-      //printf("error.");
-      fflush(stdout);
-      perror("Fork failed..."); 
-      return -1; 
+    byteCnt++; 
+    status->CurrentStatus = byteCnt; 
+    // putchar(c);
+    if(isspace(c)) {
+      wc++; 
+      int th;
+      th = pthread_create(&pmt, NULL, (void *)&progress_monitor, (PROGRESS_STATUS *)status);
+      //progress_monitor(status);
+      // make sure that the thread created corrrectly.
+      if (th) {
+      	perror("Error creating new thread...\n"); 
+      	pthread_exit(NULL);
+      }
     }
-
+     
   } while((c = fgetc(file)) != EOF); 
+  
+  pthread_join(pmt, 0);
 
-  if (pid > 0) {
-    pid_t wpid; 
-    int sts = 0;
-    while((wpid = wait(&sts)) >= 0) printf("Exit status of %d is %d.\n", (int)wpid, sts);
-    return wc; 
-  } else return wc; 
+  return wc; 
 }
 
 void progress_monitor(PROGRESS_STATUS *status) {
   static int p = 0; 
+  //printf("hello");
+  pthread_mutex_t mutex; 
+  pthread_mutex_lock(&mutex);
   int pp = ((double)status->CurrentStatus / status->TerminationValue) * 100;
 
-  for(int i = 0; i < pp - p; i++) printf("-"); 
+  for(int i = 0; i < pp - p; i++) {
+    //int cur = p + i;
+    //if ((cur > 0) && (cur % 20 == 0)) printf("+");
+    printf("-"); 
+  }
   if(pp > p && pp > 0 && (pp % 20) == 0) printf("+");
-  //printf("%d, %d\n", p, pp);
-  if(p == 100) printf("+\n"); 
+  //if (100 == pp) printf("\n");
+  pthread_mutex_unlock(&mutex); 
 
   p = pp;
+  pthread_mutex_unlock(&mutex);
+
+  fflush(stdout);
+  pthread_exit(NULL);
 }
