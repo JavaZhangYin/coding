@@ -46,23 +46,33 @@ long wordcount(FILE* file) {
   char c; 
   do {
 
-    status->CurrentStatus = byteCnt; 
-
+    
     if(pid == 0) {
-      progress_monitor(status);      
+      printf("child --> %d\n", pid); 
+      fflush(stdout);
+      status->CurrentStatus = byteCnt; 
+      progress_monitor(status);
+      
     } else if (pid > 0) {
+      //printf("parent.\n"); 
+      fflush(stdout);
       byteCnt++; 
       if(isspace(c)) wc++; 
     } else {
+      //printf("error.");
+      fflush(stdout);
       perror("Fork failed..."); 
       return -1; 
     }
 
   } while((c = fgetc(file)) != EOF); 
-  pid_t wpid; 
-  int sts = 0;
-  while((wpid = wait(&sts)) >= 0) printf("Exit status of %d is %d.\n", (int)wpid, sts);
-  return wc; 
+
+  if (pid > 0) {
+    pid_t wpid; 
+    int sts = 0;
+    while((wpid = wait(&sts)) >= 0) printf("Exit status of %d is %d.\n", (int)wpid, sts);
+    return wc; 
+  } else return wc; 
 }
 
 void progress_monitor(PROGRESS_STATUS *status) {
