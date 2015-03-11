@@ -1,11 +1,14 @@
+#include <unistd.h>
+#include <pthread.h>
 #include "defs.h"
 #include "consumer.h"
+#include "reports.h"
 
-void consumer_lucy(CANDY_COMPNAY *cc) 
+void consumer_lucy(CANDY_COMPANY *cc) 
 {  
-  while (true) {
+  while (TRUE) {
     sem_wait(&cc->sem_candy); 
-    if(isEmpty(cc->stat->belt_queue) > 0) {
+    if(isEmpty(cc->stat->belt_queue) == FALSE) {
       int c = dequeue(cc->stat->belt_queue);
 
       if(FROG_BITES_CANDY == c) {
@@ -27,11 +30,11 @@ void consumer_lucy(CANDY_COMPNAY *cc)
   }
 }
 
-void consumer_ethel(CANDY_COMPNAY *cc) {
-  while (true) {
+void consumer_ethel(CANDY_COMPANY *cc) {
+  while (TRUE) {
     sem_wait(&cc->sem_candy); 
 
-    if(isEmpty(cc->stat->belt_queue) == 0) {
+    if(isEmpty(cc->stat->belt_queue) == FALSE) {
       int c = dequeue(cc->stat->belt_queue);
       
       if(FROG_BITES_CANDY == c) {

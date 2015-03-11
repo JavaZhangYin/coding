@@ -1,14 +1,20 @@
+#include <unistd.h> // for sleep function. 
+#include <pthread.h>
 #include "producer.h"
-
-void producer_frog(CANDY_COMPNAY *cc) {
-  while (true) {
+#include "reports.h"
+       
+void producer_frog(CANDY_COMPANY *cc) {
+  while (TRUE) {
+    // printf("frog candy producer. ......\n");
     sem_wait(&cc->sem_candy); 
-    if(isFull(cc->stat->belt_queue) && 
+    if(cc->stat->total < TOTAL_CANDY_PROD && 
+       isFull(cc->stat->belt_queue) == FALSE && 
       (cc->stat->frog < 3)) {
 
       enqueue(cc->stat->belt_queue, FROG_BITES_CANDY);
       cc->stat->frog++;
       cc->stat->total++; 
+      cc->stat->frog_cnt++;
       report(cc->stat, "Added crunchy frog bite.");
 
     }
@@ -21,13 +27,16 @@ void producer_frog(CANDY_COMPNAY *cc) {
   }
 }
 
-void producer_escargot(CANDY_COMPNAY *cc) {
-  while (true) {
+void producer_escargot(CANDY_COMPANY *cc) {
+  while (TRUE) {
+    // printf("escargot candy producer. ......\n");
     sem_wait(&cc->sem_candy); 
-    if(isFull(cc->stat->belt_queue) == 0) {
+    if(cc->stat->total < TOTAL_CANDY_PROD && 
+       isFull(cc->stat->belt_queue) == FALSE) {
       enqueue(cc->stat->belt_queue, ESCARGOT_CANDY);
       cc->stat->escargot++;
       cc->stat->total++;
+      cc->stat->escargot_cnt++; 
       report(cc->stat, "Added escargot sucker.");
     }
     sem_post(&cc->sem_candy);
