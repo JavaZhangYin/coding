@@ -4,22 +4,29 @@
 #include <semaphore.h>
 #include "queue.h" 
 
-const int FROG_BITES_CANDY = 0; 
-const int ESCARGOT_CANDY = 1;
-const int TOTAL_CANDY_PROD = 100; /* total candies to produce. */
-const int TOTAL_CANDY_BELT = 10;  /* maximum candies on belt. */
+#define TRUE 1
+#define FALSE 0
+
+#define FROG_BITES_CANDY 0
+#define ESCARGOT_CANDY 1
+#define TOTAL_CANDY_PROD 100 /* total candies to produce. */
+#define TOTAL_CANDY_BELT 10  /* maximum candies on belt. */
 
 typedef struct {
-  QUEUE *belt_queue;       /* queue to maintain list of candies produced. */
-  int total; 			/* total candies produced so far. */
-  int frog; 			/* count of frog candies so far. */
-  int escargot; 		/* count of escargot candies so far. */
+  QUEUE *belt_queue; 
+  int total; 	
+  int frog; 	
+  int escargot; 
 
   // consumer statistics.
   int lucy_frog; 
   int lucy_escargot; 
   int ethel_frog; 
   int ethel_escargot; 
+
+  // producer statistics.
+  int frog_cnt; 
+  int escargot_cnt;
 } BELT_STATUS; 
 
 typedef struct {
@@ -39,4 +46,7 @@ typedef struct {
 
 } CANDY_COMPANY; 
 
+void init_belt(BELT_STATUS *st); 
+void init_cc(CANDY_COMPANY *cc); 
+void init_delays(DELAYS *); 
 #endif

@@ -2,7 +2,7 @@
 #define _QUEUE_H_
 
 #include <stdio.h>
-#include "defs.h"
+// #include "defs.h"
 
 #define SIZE 100
 

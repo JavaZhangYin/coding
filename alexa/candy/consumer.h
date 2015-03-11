@@ -3,7 +3,7 @@
 
 #include "defs.h" 
 
-void consumer_lucy(CANDY_COMPNAY *cc); 
-void consumer_ethel(CANDY_COMPNAY *cc); 
+void consumer_lucy(CANDY_COMPANY *cc); 
+void consumer_ethel(CANDY_COMPANY *cc); 
 
 #endif
