@@ -1,0 +1,45 @@
+<html>
+  <head> 
+    <meta charset="utf-8"/>
+    <style>
+
+	div {
+	    display: inline-block;
+            width: 20px;
+            height: 75px;
+            background-color: blue;
+	}
+
+	div.bar {
+	    display: inline-block; 
+	    width: 20px; 
+	    height: 75px; 
+	    background-color: teal;
+	}
+    </style>
+    <title>D3 Tree Example </title>
+    <script src="./d3.v3.min.js" charset="utf-8"></script>
+  </head> 
+
+  <body> 
+    <h1>D3 Histogram Example.</h1>
+    <div></div>
+
+    <script type="text/javascript"> 
+      var dataset = []; 
+      for ( var i = 0; i< 100; i++) {
+	  dataset.push(Math.random() * 20); 
+      }
+
+      d3.select("body").selectAll("div")
+      .data(dataset)
+      .enter()
+      .append("div")
+      .attr("class", "bar")
+      .style("height", function(d) {
+          var height = d * 5; 
+	  return height + "px"; 
+      }); 
+    </script>
+  </body>
+</html>

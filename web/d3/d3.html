@@ -1,0 +1,33 @@
+<html>
+  <head> 
+    <meta charset="utf-8"/>
+    <title> D3 Example </title>
+    <script src="./d3.v3.min.js" charset="utf-8"></script>
+  </head> 
+
+  <body> 
+    <h1>D3 example.</h1>
+    <div> 
+      <script type="text/javascript"> 
+	var canvas = d3.select("body").append("svg") 
+	.attr("width", 500)
+	.attr("height", 500); 
+	
+	var group = canvas.append("g")
+	.attr("transform", "translate(100, 100)");
+	
+	var r = 100; 
+	var p = Math.PI * 2; 
+	
+	var arc = d3.svg.arc() 
+	.innerRadius(r - 20) 
+	.outerRadius(r) 
+	.startAngle(0)
+	.endAngle(p - 3); 
+	
+	group.append("path") 
+	.attr("d", arc) 
+      </script>
+    </div>
+  </body>
+</html>
