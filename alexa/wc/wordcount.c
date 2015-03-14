@@ -1,3 +1,6 @@
+#ifndef _DEFS_H_
+#define _DEFS_H_
+
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -93,3 +96,5 @@ void progress_monitor(PROGRESS_STATUS *status) {
     p = pp;
   }
 }
+
+#endif
