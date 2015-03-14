@@ -14,14 +14,14 @@
       .range(["red", "blue", "orange"]);
 
       var canvas = d3.select("body").append("svg") 
-      .attr("width", 1500)
-      .attr("height", 1500); 
+      .attr("width", 600)
+      .attr("height", 600); 
       
       var group = canvas.append("g")
       .attr("transform", "translate(300, 300)");
       
       var arc = d3.svg.arc() 
-      .innerRadius(200) 
+      .innerRadius(150) 
       .outerRadius(r) 
 
       var pie = d3.layout.pie()
