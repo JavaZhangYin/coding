@@ -9,7 +9,7 @@ all: $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) $(LDFLAGS) $^ -o $@
-.o: .c
+.o:.c
 	$(CC) $(CFLAGS) $< -o $@
 clean: 
-	@rm -rf $(OBJS)
+	@rm -rvf $(OBJS) $(EXEC)
