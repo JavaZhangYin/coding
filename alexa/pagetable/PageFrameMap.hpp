@@ -10,22 +10,22 @@ using namespace std;
 
 class PageFrameMap {
   
- public: 
-  PageFrameMap(); 
-  int getFrame() const; 
-  int setFrame(int f); 
-  int next(); // get the next frame for mapping. 
+public: 
+    PageFrameMap(); 
+    int getFrame() const; 
+    int setFrame(int f); 
+    int next(); // get the next frame for mapping. 
 
-  /**
-   * Return the physical address with given offset. 
-   * @param offset the address offset relative to the page.
-   * @return the physical address. 
-   */
-  int getPhysicalAddress(int offset); 
+    /**
+     * Return the physical address with given offset. 
+     * @param offset the address offset relative to the page.
+     * @return the physical address. 
+     */
+    int getPhysicalAddress(int offset); 
 
- private: 
-  static int current; // currently mapped page. 
-  int frame;	      // frame address.
+private: 
+    static int current; // currently mapped page. 
+    int frame;	      // frame address.
   
 }; 
 
