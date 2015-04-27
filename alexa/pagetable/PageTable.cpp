@@ -3,7 +3,7 @@
 // populate page table with give size; 
 PageTable::PageTable(int size) {
 
-    entries = (TableEntry *)malloc(4*size);
+    if (size > 0) entries = (TableEntry *)malloc(4*size);
 }
 
 void PageTable::insert(unsigned int logicAddr, 

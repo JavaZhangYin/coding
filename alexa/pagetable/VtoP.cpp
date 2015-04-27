@@ -1,25 +1,31 @@
+/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
 #include <string>
 #include <fstream>
+#include <iomanip> // for setfill and setw.
 
 int main(int argc, char **argv) {
   
-  char *input = NULL; 
-
+    char input[100];
   // number of bits for each level.
   int ll[10]; 
   int llidx = 0; 
+  for(int i = 0; i < 10; i++) ll[i] = 0; 
 
   // process first n memory references.
   int n = -1;
 
   // output to specified file. 
-  char *output = NULL;	
+  char output[100];	
 
   // show logical to physical translation. 0 for non show. 1 for show. 
   int show = 0; 
+
+  // for(int m = 0; m < argc; m++) {
+  //     std::cout << "Argument: [" << m << "] = " << argv[m] << std::endl; 
+  // }
 
   // parse options. 
   int i ; 
@@ -28,15 +34,24 @@ int main(int argc, char **argv) {
     std::cout << argv[i] << std::endl; 
     
     if(strcmp(argv[i], "-n") == 0) {
+
       n = atoi(argv[++i]);
+      std::cout << "n = " << n << std::endl; 
+
     } else if(strcmp(argv[i], "-p") == 0) {
+
       strcpy(output, argv[++i]);
+      std::cout << "output file is: " << output << std::endl; 
+
     } else if (strcmp(argv[i], "-t") == 0) {
-      show = 1; 
+
+        show = 1; 
+        std::cout << "Showing the mapping steps...." << std::endl; 
+
     } else break; 
 
   }
-  std::cout << i << std::endl;
+  // std::cout << i << std::endl;
 
   std::ofstream ofs; 
 
@@ -78,19 +93,29 @@ int main(int argc, char **argv) {
     exit(-1);
   }
 
-  // create page table. 
-  //PageTable *pt = new PageTable();
+  // create level 0 page table. 
+  PageTable *pt = new PageTable(ll[0]);
   
   std::string line; 
   // process all lines in the file.
   int cnt = 0;
-  return 0; 
+
   while (getline(ifs, line)) {
     // line is the data.
 
     std::string::size_type sz; 
-    int logic = atoi(line.c_str());
+    long logic = (int)strtol(line.c_str(), NULL, 16);
+    std::cout << "Handling address: " << line 
+              << " --> " << std::setfill('0') << std::setw(8) 
+              << std::hex << logic << std::endl; 
+
     // int logic = std::stoi(line, &sz);
+    std::cout << "Creating mapping......" << std::endl;
+    // page indices.
+    for(int i = 0; i < llidx; i++) {
+        std::cout << "level " << i << " is " << ll[i] << " bits." << std::endl; 
+    }
+    
 
     //pt->insert(logic); 
     cnt++; 
