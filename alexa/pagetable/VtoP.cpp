@@ -1,27 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-
-typedef struct {
-
-} PAGETABLE; 
-
-typedef struct {
-
-} LEVEL; 
-
-typedef struct {
-
-} MAP; 
-
-// the
-unsigned int LogicalToPage(unsigned int LogicalAddress, 
-			   unsigned int Mask, 
-			   unsigned int Shift); 
-
-MAP *PageLookup (PAGETABLE *PageTable, unsigned int LogicalAddress);
-void PageInsert (PAGETABLE *PageTable, unsigned int LocalAddress, unsigned int Frame); 
-
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+#include <string>
+#include <fstream>
 
 int main(int argc, char **argv) {
   
@@ -32,7 +13,7 @@ int main(int argc, char **argv) {
   int llidx = 0; 
 
   // process first n memory references.
-  int n;
+  int n = -1;
 
   // output to specified file. 
   char *output = NULL;	
@@ -44,28 +25,88 @@ int main(int argc, char **argv) {
   int i ; 
   for(i = 1; i < argc; i++) {
     
-    printf("%s\n", argv[i]);
+    std::cout << argv[i] << std::endl; 
     
     if(strcmp(argv[i], "-n") == 0) {
       n = atoi(argv[++i]);
     } else if(strcmp(argv[i], "-p") == 0) {
-      output = argv[++i];
+      strcpy(output, argv[++i]);
     } else if (strcmp(argv[i], "-t") == 0) {
       show = 1; 
     } else break; 
 
   }
+  std::cout << i << std::endl;
 
-  input = argv[i];
-  for (int j = i; j < argc; j++) {
-    ll[llidx++] = atoi(argv[j]); 
-    printf("Level %d has %d bits...\n", llidx, ll[llidx-1]); 
+  std::ofstream ofs; 
+
+  // output file. 
+  if (NULL != output) {
+    ofs.open(output, std::ofstream::out|std::ofstream::app); 
+
+    if (!ofs.is_open()) {
+      std::cerr << "Error opening output file." << std::endl; 
+      exit(-1);
+    }
   }
 
-  // do translation. 
+  strcpy(input, argv[i++]);
+  
+  std::cout << "Input file is:" << input << std::endl; 
 
-  // output. 
+  for (int j = i; j < argc; j++) {
+    ll[llidx++] = atoi(argv[j]); 
+    std::cout << "Level " << llidx << " has " 
+	      << ll[llidx-1] << " bits..." << std::endl;
+  }
 
+  //////////////////////
+  // do translation.
+  //////////////////////
+  
+  if (NULL == input) {
+    perror("Please specify the input file. "); 
+    exit(-1); 
+  }
+
+  std::ifstream ifs(input);
+  // FILE *ifp = fopen(input);
+  if (ifs.is_open()) {
+    std::cout << "Input file opened ..." << std::endl; 
+  } else {
+    std::cerr << "Error opening input file..." << std::endl; 
+    exit(-1);
+  }
+
+  // create page table. 
+  //PageTable *pt = new PageTable();
+  
+  std::string line; 
+  // process all lines in the file.
+  int cnt = 0;
+  return 0; 
+  while (getline(ifs, line)) {
+    // line is the data.
+
+    std::string::size_type sz; 
+    int logic = atoi(line.c_str());
+    // int logic = std::stoi(line, &sz);
+
+    //pt->insert(logic); 
+    cnt++; 
+    
+    //unsigned int frame = pt->lookup(logic);
+    //if (ofs.is_open()) {
+    //	ofs << logic << " -> " << frame << std::endl; 
+    //}
+
+    // process n lines of input. 
+    if (n > 0 && cnt >= n) break; 
+      
+  }
+  
+  if (ifs.is_open()) ifs.close();
+  if (ofs.is_open()) ofs.close(); 
 
   return 0; 
 }
