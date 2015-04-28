@@ -1,8 +1,8 @@
-CC=gcc
+CC=g++
 CFLAGS+=-std=c99
 CFLAGS+=-ggdb
-LDFLAGS=-lpthread
-OBJS=pagetable.o
+LDFLAGS=
+OBJS=VtoP.o PageTable.o PageFrameMap.o
 EXEC=pagetable
 
 all: $(EXEC)
