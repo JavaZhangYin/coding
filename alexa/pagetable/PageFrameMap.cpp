@@ -17,4 +17,4 @@ int PageFrameMap::next() {
     return ++current;
 }
 
-PageFrameMap::current = 0x00000000; 
+int PageFrameMap::current = 0x00000000; 

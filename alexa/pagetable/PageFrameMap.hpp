@@ -23,8 +23,8 @@ public:
      */
     int getPhysicalAddress(int offset); 
 
-private: 
     static int current; // currently mapped page. 
+private: 
     int frame;	      // frame address.
   
 }; 
