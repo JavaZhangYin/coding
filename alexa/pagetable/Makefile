@@ -5,7 +5,7 @@ LDFLAGS=
 OBJS=VtoP.o PageTable.o PageFrameMap.o
 EXEC=pagetable
 
-all: $(EXEC)
+all: $(EXEC) byu_tracereader
 
 $(EXEC): $(OBJS)
 	$(CC) $(LDFLAGS) $^ -o $@
@@ -16,4 +16,4 @@ byu_tracereader: byu_tracereader.c byutr.h
 	$(CC) -o $@ $<
 
 clean: 
-	@rm -rvf $(OBJS) $(EXEC)
+	@rm -rvf $(OBJS) $(EXEC) byu_tracereader
