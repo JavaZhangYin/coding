@@ -1,9 +1,9 @@
-#include "PageTable.h"
+#include "PageTable.hpp"
+//#include "PageFrameMap.hpp"
 
 // populate page table with give size; 
 PageTable::PageTable(int size) {
-
-    if (size > 0) entries = (TableEntry *)malloc(4*size);
+  // if (size > 0) entries = (TableEntry *)malloc(4*size);
 }
 
 void PageTable::insert(unsigned int logicAddr, 
@@ -11,7 +11,7 @@ void PageTable::insert(unsigned int logicAddr,
 
 }
 
-Map * PageTable::lookup(unsigned int logicAddr) {
+PageFrameMap * PageTable::lookup(unsigned int logicAddr) {
 
 }
 

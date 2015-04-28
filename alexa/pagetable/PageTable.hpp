@@ -5,11 +5,13 @@
 
 using namespace std;
 
+class TableEntry; 
+
 class PageTable {
  public:
   PageTable(int size); 
   void insert(unsigned int logicAddr, unsigned int frame); 
-  void lookup(unsigned int logicAddr); 
+  PageFrameMap *lookup(unsigned int logicAddr); 
   unsigned int logicToPage(unsigned int laddr, 
 			   unsigned int mask, 
 			   unsigned int shift); 
