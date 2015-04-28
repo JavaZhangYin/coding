@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip> // for setfill and setw.
+#include "PageTable.hpp"
 
 int main(int argc, char **argv) {
   
@@ -119,6 +120,9 @@ int main(int argc, char **argv) {
 
     //pt->insert(logic); 
     cnt++; 
+
+    // TODO, insert entry into the tree and then return the mapped 
+    // physical address. 
     
     //unsigned int frame = pt->lookup(logic);
     //if (ofs.is_open()) {
